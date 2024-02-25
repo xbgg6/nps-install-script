@@ -1,6 +1,7 @@
 #!/bin/bash
 #NEW_VER_version="v0.26.10"
 # https://github.com/ehang-io/nps
+# Blog https://www.itwk.cc
 #Powered By.爱写代码的小白
 
 # 如果为指定 默认返回值的含义:
@@ -95,19 +96,19 @@ if [[ $# = 0 ]]; then
     # Get Public IP address
     ipc=$(ip addr | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | egrep -v "^192\.168|^172\.1[6-9]\.|^172\.2[0-9]\.|^172\.3[0-2]\.|^10\.|^127\.|^255\.|^0\." | head -n 1)
 	# Get Local IP address
-	ipu=$(ifconfig  |grep inet |grep inet |awk NR==1'{print$2}')
-    ipl=$(ifconfig  |grep inet |grep inet |awk NR==1'{print$2}')
+	#ipu=$(ifconfig  |grep inet |grep inet |awk NR==1'{print$2}')
+    ipl=$(curl -sSL https://www.itwk.cc/api/getip/local.php)
     if [[ "$IP" = "" ]]; then
-        ipc=$(wget -qO- api.928wang.cn/api/getip)
+        ipc=$(curl -sSL https://www.itwk.cc/api/getip)
     fi
     colorEcho ${GREEN} '======================================
        NPS服务端一键安装脚本!
 ======================================
        Powered By.爱写代码的小白
 ======================================
-      官网:https://blog.itwk.cc
+      官网:https://www.itwk.cc
 ======================================
-      问题反馈: admin@928wang.cn
+      问题反馈: admin@itwk.cc
 ======================================
       请输入对应数字并按回车继续安装   
 ======================================'
